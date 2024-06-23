@@ -1,0 +1,48 @@
+function NotTetragonal(X,p)
+	C2:=ChangeRing(X,GF(p));
+	FF := FunctionField(C2);
+	AFF := AlgorithmicFunctionField(FF);
+
+	pls1:=Places(AFF,1);
+	pls2:=Places(AFF,2);
+	pls3:=Places(AFF,3);
+
+	s:={};
+
+	// 1+1+1+1
+	s:={};
+	for i:=1 to #pls1 do
+	for j:=i to #pls1 do
+	for k:=j to #pls1 do
+	for l:=k to #pls1 do
+	s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls1[j]+pls1[k]+pls1[l]))};
+	end for;
+	end for;
+  end for;
+	end for;
+
+	// 1+1+2
+	for i:=1 to #pls1 do
+	for j:=i to #pls1 do
+  for k:=1 to #pls2 do
+	s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls1[j]+pls2[k]))};
+	end for;
+	end for;
+	end for;
+
+	// 1+3
+	for i:=1 to #pls1 do
+	for j:=1 to #pls3 do
+	s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls3[j]))};
+	end for;
+	end for;
+
+	assert s eq {1};
+
+	return s;
+end function;
+
+
+load "XH_31-2.m"; C:= Curve(P,equations); NotTetragonal(C,7);
+load "XH_31-5,6.m"; C:= Curve(P,equations); NotTetragonal(C,2);
+load "XH_125-4.m"; C:= Curve(P,equations); NotTetragonal(C,2);
