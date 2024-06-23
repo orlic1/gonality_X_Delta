@@ -1,0 +1,25 @@
+betti := function(X)
+A:=QuotientModule(DefiningIdeal(X));
+BettiTable(A);
+return BettiNumber(A,2,4);
+end function;
+
+load "XH_29-12.m"; C:= Curve(P,equations); betti(C);
+load "XH_34-13.m"; C:= Curve(P,equations); betti(C);
+load "XH_35-11,16.m"; C:= Curve(P,equations); betti(C);
+load "XH_39-16,17.m"; C:= Curve(P,equations); betti(C);
+load "XH_40-19.m"; C:= Curve(P,equations); betti(C);
+load "XH_43-2.m"; C:= Curve(P,equations); betti(C);
+load "XH_44-5,7,9,19.m"; C:= Curve(P,equations); betti(C);
+load "XH_45-14,16.m"; C:= Curve(P,equations); betti(C);
+load "XH_51-2.m"; C:= Curve(P,equations); betti(C);
+load "XH_52-3.m"; C:= Curve(P,equations); betti(C);
+load "XH_53-4.m"; C:= Curve(P,equations); betti(C);
+load "XH_55-4.m"; C:= Curve(P,equations); betti(C);
+load "XH_56-3.m"; C:= Curve(P,equations); betti(C);
+load "XH_57-2.m"; C:= Curve(P,equations); betti(C);
+load "XH_61-4.m"; C:= Curve(P,equations); betti(C);
+load "XH_63-4,5.m"; C:= Curve(P,equations); betti(C);
+load "XH_65-2,7.m"; C:= Curve(P,equations); betti(C);
+load "XH_72-11,25.m"; C:= Curve(P,equations); betti(C);
+load "XH_73-25.m"; C:= Curve(P,equations); betti(C);
