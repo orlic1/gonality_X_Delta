@@ -1,0 +1,46 @@
+load "XH_39-14.m";
+C:= Curve(P,equations);
+C2:=ChangeRing(C,GF(2));
+FF := FunctionField(C2);
+AFF := AlgorithmicFunctionField(FF);
+pls1:=Places(AFF,1);
+pls2:=Places(AFF,2);
+pls3:=Places(AFF,3);
+pls4:=Places(AFF,4);
+#pls1,#pls2;  // 12,0
+
+// thus there exists an element of P^1(F_2) with preimage at least 4
+
+// 1+1+1+1+1+1+1
+s:={};
+for i:=1 to #pls1 do
+for j:=i to #pls1 do
+for k:=j to #pls1 do
+for l:=k to #pls1 do
+for m:=l to #pls1 do
+for n:=m to #pls1 do
+for o:=n to #pls1 do
+s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls1[j]+pls1[k]+pls1[l]+pls1[m]+pls1[n]+pls1[o]))};
+end for;
+end for;
+end for;
+end for;
+end for;
+end for;
+end for;
+s;
+
+// 1+1+1+1+3
+s:={};
+for i:=1 to #pls1 do
+for j:=i to #pls1 do
+for k:=j to #pls1 do
+for l:=k to #pls1 do
+for m:=1 to #Places(AFF,3) do
+s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls1[j]+pls1[k]+pls1[l]+Places(AFF,3)[m]))};
+end for;
+end for;
+end for;
+end for;
+end for;
+s;
