@@ -1,0 +1,100 @@
+//pts - the points on some curve we found
+//g - the dimension of ambient space of that curve (number of variables)
+
+AnalyzePts := function(pts, g)
+	for pt in pts do
+		FldDef := RationalsAsNumberField();
+		deg := 1;
+
+		for j in [1..g] do
+			K := NumberField(MinimalPolynomial(pt[j]));
+				
+			if Degree(K) le 2 then
+				FldDef := Compositum(FldDef, NumberField(MinimalPolynomial(pt[j])));
+			else
+				deg := -1;
+				break;
+			end if;			
+		end for;
+
+		if deg eq -1 then
+			continue;
+		end if;
+
+		if Degree(FldDef) ne 2 then
+			continue;
+		end if;
+		
+		crit := 0;
+		pol := MinimalPolynomial(pt[1]);
+		
+		for j in [1..g] do
+			K := NumberField(MinimalPolynomial(pt[j]));
+			if Degree(K) eq Degree(FldDef) then
+				crit := j;
+				pol := MinimalPolynomial(pt[j]);
+				break;
+			end if;
+		end for;
+
+		pt[crit], pol, pt;
+				
+	end for;
+	return 1;
+end function;
+
+
+//we get some points on X
+//X - some curve given by homogenous equations
+//bd - bound for the absolute value of hyperplane coefficients
+
+SearchPts := function(X, bd)
+	CR<[x]> := CoordinateRing(AmbientSpace(X));
+	NoVars := Dimension(AmbientSpace(X));
+
+	"--------------------------------------";
+	"FIRST GETTING POINTS WITH AT LEAST ONE ZERO COORDINATE...";
+	"-------------------------------------";
+
+	for i in [1..NoVars] do
+		I := ideal<CR | x[i]>;
+		Z := Scheme(X, I);
+
+		pts := PointsOverSplittingField(Z);
+		_ := AnalyzePts(pts, NoVars);
+	end for;
+	
+	"--------------------------------------";
+	"NOW POINTS WITH NON-ZERO COORDINATES...";
+	"--------------------------------------";
+
+	for i in [0..bd] do
+	for j in [-bd..bd] do
+	for k in [-bd..bd] do
+
+		b := [i,j,k];
+
+		for i in [4..NoVars] do
+			b := Append(b, 0);
+		end for;
+
+		if GCD(b) eq 1 then
+
+			f := &+[b[i]*x[i] : i in [1..NoVars]];
+
+			I := ideal<CR | f>;
+			Z := Scheme(X, I);
+
+			pts := PointsOverSplittingField(Z);
+			_ := AnalyzePts(pts, NoVars);
+		end if; 
+	end for;
+	end for;
+	end for;
+
+	return 1;
+end function;
+
+// Example: X:=X_0(160)^+
+//X:=X0NQuotient(160,[160]);
+//SearchPts(X,80);
