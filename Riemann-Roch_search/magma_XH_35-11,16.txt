@@ -1,0 +1,26 @@
+load "XH_35-11,16.m";
+C:= Curve(P,equations);
+pls1:={Place(C ! [1, 0, 0, 0, 0, 0, 0, 0, 0])};
+pls1:=pls1 join {Place(C ! [1, 1, 1, 0, 1, 0, 0, 0, 0])};
+pls1:=pls1 join {Place(C ! [2, 1, 1, 1, 0, 1, 1, 0, 1])};
+pls1:=pls1 join {Place(C ! [3, 1, 1, 1, 1, 0, 0, 1, 0])};
+
+pls1:=SetToSequence(pls1);
+
+// 1+1+1+1+1+1
+s:={};
+for i:=1 to #pls1 do
+for j:=i to #pls1 do
+for k:=j to #pls1 do
+for l:=k to #pls1 do
+for m:=l to #pls1 do
+for n:=m to #pls1 do
+s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls1[j]+pls1[k]+pls1[l]+pls1[m]+pls1[n]))};
+if s eq {1,2} then i,j,k,l,m,n,s; break i; end if;
+end for;
+end for;
+end for;
+end for;
+end for;
+end for;
+s;
