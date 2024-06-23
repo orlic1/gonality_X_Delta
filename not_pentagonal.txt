@@ -1,0 +1,175 @@
+function NotPentagonal(X,p)
+	C2:=ChangeRing(X,GF(p));
+	FF := FunctionField(C2);
+	AFF := AlgorithmicFunctionField(FF);
+
+	pls1:=Places(AFF,1);
+	pls2:=Places(AFF,2);
+	pls3:=Places(AFF,3);
+  pls4:=Places(AFF,4);
+
+	s:={};
+
+	// 1+1+1+1+1
+	s:={};
+	for i:=1 to #pls1 do
+	for j:=i to #pls1 do
+	for k:=j to #pls1 do
+	for l:=k to #pls1 do
+  for m:=l to #pls1 do
+	s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls1[j]+pls1[k]+pls1[l]+pls1[m]))};
+	end for;
+	end for;
+  end for;
+	end for;
+	end for;
+
+  if (#pls1)/(p+1) gt 3 then return s; end if;  // it is enough to check divisors with >=4 F_p-rational points
+
+	// 1+1+1+2
+	for i:=1 to #pls1 do
+	for j:=i to #pls1 do
+  for k:=j to #pls1 do
+	for l:=1 to #pls2 do
+	s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls1[j]+pls1[k]+pls2[l]))};
+	end for;
+	end for;
+	end for;
+  end for;
+
+  if (#pls1)/(p+1) gt 2 then return s; end if;  // it is enough to check divisors with >=3 F_p-rational points
+
+
+	// 1+1+3
+	for i:=1 to #pls1 do
+	for j:=i to #pls1 do
+  for k:=1 to #pls3 do
+	s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls1[j]+pls3[k]))};
+	end for;
+	end for;
+	end for;
+
+  if (#pls1)/(p+1) gt 1 then return s; end if;  // it is enough to check divisors with >=2 F_p-rational points
+
+	// 1+2+2
+	for i:=1 to #pls1 do
+	for j:=1 to #pls2 do
+  for k:=j to #pls2 do
+	s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls2[j]+pls2[k]))};
+	end for;
+	end for;
+	end for;
+
+	// 1+4
+	for i:=1 to #pls1 do
+	for j:=1 to #pls4 do
+	s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls4[j]))};
+	end for;
+	end for;
+
+	assert s eq {1};
+
+	return s;
+end function;
+
+
+load "XH_29-12.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_33-10.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_34-13.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_35-11,16.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_37-10,11.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_38-7,11.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_39-16,17.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_40-19.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_41-4.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_41-3,9,14.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_29-12.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_42-5,17.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_42-13.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_43-2.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_43-6,7.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_44-21.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_45-8,17,19.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_45-14,16.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_48-23.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_49-18,19.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_51-2.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_52-21.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_52-3.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_53-4.m"; C:= Curve(P,equations); NotPentagonal(C,19);
+load "XH_54-17,19.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_55-16.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_55-12,21,23.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_56-3.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_56-9,15.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_56-5,9.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_56-13,15,27.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_57-8,20.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_57-2.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_58-9.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_60-11,19,29.m"; C:= Curve(P,equations); NotPentagonal(C,7);
+load "XH_60-11,13,23.m"; C:= Curve(P,equations); NotPentagonal(C,7);
+load "XH_60-7,11,17.m"; C:= Curve(P,equations); NotPentagonal(C,7);
+load "XH_61-4.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_61-8.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_61-29.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_62-27.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_63-4,5.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_63-8,20.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_63-8,10.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_63-5,8.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_63-2.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_64-15,17,31.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_65-2,7.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_65-4,6.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_65-3,4.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_65-8,12.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_66-25.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_67-8.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_29-12.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_68-9.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_69-4.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_70-27.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_70-9.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_71-20.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_72-13,25.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_72-17,25.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_72-5.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_72-17,19,35.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_73-21.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_73-25.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_74-25.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_75-16.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_77-32.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_77-8.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_77-4.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_78-35,49.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_79-27.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_80-7,9.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_80-21,49.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_81-8.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_85-2,9.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_85-3,4.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_87-4.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_88-5.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_88-25,105.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_89-9.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_91-8,12.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_91-8,24.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_91-8,48.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_91-4,12.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_92-9.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_95-4.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_95-8.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_96-17,25.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_96-11,25.m"; C:= Curve(P,equations); NotPentagonal(C,5);
+load "XH_100-9.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_101-4.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_103-22.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_104-5,9.m"; C:= Curve(P,equations); NotPentagonal(C,3);
+load "XH_109-2.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_109-36.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_111-8.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_111-4.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_119-27.m"; C:= Curve(P,equations); NotPentagonal(C,2);
+load "XH_119-9.m"; C:= Curve(P,equations); NotPentagonal(C,2);
