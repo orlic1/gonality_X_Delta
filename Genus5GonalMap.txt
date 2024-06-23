@@ -1,0 +1,10 @@
+load "XH_30-11.m"; C:= Curve(P,equations); Genus5GonalMap(C);
+load "XH_32-15.m"; C:= Curve(P,equations); Genus5GonalMap(C);
+load "XH_33-2.m"; C:= Curve(P,equations); Genus5GonalMap(C);
+load "XH_35-4,6.m"; C:= Curve(P,equations); Genus5GonalMap(C);
+load "XH_36-17.m"; C:= Curve(P,equations); Genus5GonalMap(C);
+load "XH_39-4.m"; C:= Curve(P,equations); Genus5GonalMap(C);
+load "XH_40-9,11,19.m"; C:= Curve(P,equations); Genus5GonalMap(C);
+load "XH_41-2.m"; C:= Curve(P,equations); Genus5GonalMap(C);
+load "XH_45-4.m"; C:= Curve(P,equations); Genus5GonalMap(C);
+load "XH_64-9.m"; C:= Curve(P,equations); Genus5GonalMap(C);
