@@ -1,0 +1,18 @@
+load "XH_35-6,8,13.m";
+C:= Curve(P,equations);
+p:=PointSearch(C,1000);
+pls1:=[Place(P) : P in p];
+// 1+1+1+1
+s:={};
+for i:=1 to #pls1 do
+for j:=i to #pls1 do
+for k:=j to #pls1 do
+for l:=k to #pls1 do
+s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls1[j]+pls1[k]+pls1[l]))};
+if s eq {1,2} then break i; end if;
+end for;
+end for;
+end for;
+end for;
+s;
+
