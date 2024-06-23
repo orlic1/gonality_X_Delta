@@ -1,0 +1,1 @@
+P<x0,x1,x2,x3,x4>:=ProjectiveSpace(Rationals(),4); equations:=[-x3^2 + x0*x4 - 2*x4^2, -x2^2 + x0*x3 - 3*x3*x4, x1^2 - x0*x2 + x2*x4];
