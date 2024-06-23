@@ -6,7 +6,7 @@ Fp-gonality folder contains Magma codes that give lower bound on the $\mathbb{Q}
 
 The files gl2.m, gl2.sig, and gl2data.m from the folder Sutherland-GL2 were retrieved from the repository https://github.com/AndrewVSutherland/ell-adic-galois-images by Jeremy Rouse, Andrew V. Sutherland, and David Zureick-Brown. They were used in the file Fp2_point_count.txt to solve Proposition 3.5.
 
-Riemann-Roch_search folder contains codes that find rational functions in Proposition 3.14. Each file is a code for one curve.
+Riemann-Roch_search folder contains codes that find rational functions in Proposition 3.14. Each file is a code for one curve $X_\Delta(N)$.
 
 QuadPts.txt is an auxiliary file that was used to search for quadratic points via intersections with hyperplanes. These quadratic points were then used in codes in the folder Riemann-Roch_search to find rational functions.
 
