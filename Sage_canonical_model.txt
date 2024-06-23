@@ -1,0 +1,14 @@
+// This a sample code that produces a canonical model of the curve X_{+-1,+-12}(29). We can use it in the same way for any other curve X_Delta(N). The code requires MD Sage to be installed previously.
+// The file XH_29-12.m contains the model of the curve as well as the code for Magma to import that model.
+
+from mdsage import *
+G=GammaH(29,[12,-1])
+quadratic_forms = vanishing_quadratic_forms(G)
+R=quadratic_forms[0].parent()
+n=R.ngens()
+
+variables=",".join(f"x{i}" for i in range(n))
+
+magma_file=f"""P<{variables}>:=ProjectiveSpace(Rationals(),{n-1}); equations:={quadratic_forms};"""
+
+with open("XH_29-12.m", "w") as file: file.write(magma_file)
