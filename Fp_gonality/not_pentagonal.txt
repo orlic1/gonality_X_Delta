@@ -135,7 +135,6 @@ load "XH_71-20.m"; C:= Curve(P,equations); NotPentagonal(C,3);
 load "XH_72-13,25.m"; C:= Curve(P,equations); NotPentagonal(C,5);
 load "XH_72-17,25.m"; C:= Curve(P,equations); NotPentagonal(C,5);
 load "XH_72-5.m"; C:= Curve(P,equations); NotPentagonal(C,5);
-load "XH_72-17,19,35.m"; C:= Curve(P,equations); NotPentagonal(C,5);
 load "XH_73-21.m"; C:= Curve(P,equations); NotPentagonal(C,2);
 load "XH_73-25.m"; C:= Curve(P,equations); NotPentagonal(C,3);
 load "XH_74-25.m"; C:= Curve(P,equations); NotPentagonal(C,3);
