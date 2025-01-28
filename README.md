@@ -1,4 +1,4 @@
-The Sage and Magma codes from the article "Tetragonal Intermediate Modular Curves" by P. Orlić.
+# The Sage and Magma codes from the article "Tetragonal Intermediate Modular Curves" by P. Orlić.
 
 Sage_canonical_models.txt contains a sample Sage code that produces a canonical model of the curve $X_{\{\pm1,\pm12\}}(29)$. We can use it in the same way for any other curve $X_\Delta(N)$. The code requires MD Sage to be installed previously. The output file contains the model of the curve as well as the code for Magma to import that model. The canonical models of the curves are stored in the folder XH_models. These models are then used in other Magma codes.
 
