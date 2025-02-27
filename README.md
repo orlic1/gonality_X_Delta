@@ -63,7 +63,38 @@ C:= Curve(P,equations);
 SearchPts(C,20);
 ```
 
-- Riemann-Roch_search folder contains codes that find rational functions of degree $4$. Each file is a code for one curve.
+- Riemann-Roch_search folder contains codes that find rational maps to $\mathbb{P}^1$. Each file is a code for one curve. We find the maps by finding an effective rational divisor with Riemann-Roch dimension $2$. Such a divisor is constructed from rational points and quadratic points that were found using the function SearchPts().
+
+### Example
+We prove that the curve $X_{\{\pm1,\pm12\}}(29)$ has $\mathbb{Q}$-gonality at most $6$.
+```magma
+load "XH_29-12.m";
+C:= Curve(P,equations);
+pls1:={Place(C ! [1, 0, 0, 0, 0, 0, 0, 0])};
+pls1:=pls1 join {Place(C ! [2, 0, 1, 0, 1, 0, 1, 0])};
+pls1:=pls1 join {Place(C ! [3, 4, 2, 2, 2, 1, 0, 0])};
+
+pls1:=SetToSequence(pls1);
+
+// 1+1+1+1+1+1
+s:={};
+for i:=1 to #pls1 do
+for j:=i to #pls1 do
+for k:=j to #pls1 do
+for l:=k to #pls1 do
+for m:=l to #pls1 do
+for n:=m to #pls1 do
+s:=s  join {Dimension(RiemannRochSpace(pls1[i]+pls1[j]+pls1[k]+pls1[l]+pls1[m]+pls1[n]))};
+if s eq {1,2} then break i; end if;
+end for;
+end for;
+end for;
+end for;
+end for;
+end for;
+s;
+```
+The output is {1,2}, proving our claim.
 
 - Fp_gonality folder contains codes that give lower bounds on $\mathbb{Q}$-gonality by bounding the $\mathbb{F}_p$-gonality. We prove that all $\mathbb{F}_p$-rational divisors $D\geq0$ of degree $d$ have Riemann-Roch dimension $1$.
 
