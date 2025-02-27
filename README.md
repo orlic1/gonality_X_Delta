@@ -6,7 +6,7 @@
 
 - Sage_canonical_models.txt contains a sample Sage code that produces a canonical model of the curve $X_{\{\pm1,\pm12\}}(29)$. We can use it in the same way for any other curve $X_\Delta(N)$ that has a canonical model composed of quadrics (that is, not subhyperelliptic nor trigonal).
 
-The code requires MD Sage to be installed previously. The output file contains the model of the curve as well as the code for Magma to import that model. 
+The code requires MD Sage to be installed previously (see https://github.com/koffie/mdsage for installation instructions). The output file contains the model of the curve as well as the code for Magma to import that model. 
 
 ### Example
 We compute a canonical model of a curve $X_{\{\pm1,\pm12\}}(29)$.
