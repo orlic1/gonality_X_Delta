@@ -44,7 +44,7 @@ BettiNumber(A,2,4);  // Returns 0. Notice that the indexations of Betti numbers 
 - Genus5GonalMap.txt constructs degree $4$ rational maps to $\mathbb{P}^1$ from curves $X_{\Delta}(N)$ of genus $5$ using the Magma function Genus5GonalMap().
 
 ### Example
-We explicitly find a degree $4$ rational map from $X_0^{\{\pm1,\pm11\}}(30)$ to $\mathbb{P}^1$. 
+We explicitly find a degree $4$ rational map from $X_{\{\pm1,\pm11\}}(30)$ to $\mathbb{P}^1$. 
 ```magma
 load "XH_30-11.m";
 C:= Curve(P,equations);
