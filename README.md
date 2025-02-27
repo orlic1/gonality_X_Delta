@@ -67,7 +67,7 @@ SearchPts(C,20);
 
 - Fp_gonality folder contains codes that give lower bounds on $\mathbb{Q}$-gonality by bounding the $\mathbb{F}_p$-gonality. We prove that all $\mathbb{F}_p$-rational divisors $D\geq0$ of degree $d$ have Riemann-Roch dimension $1$.
 
-- Sutherland-GL2 folder also gives bounds on the $\mathbb F_p$ -gonality by counting the number of $\mathbb{F}_{p^2}$ points and concluding it is too large (greater than $d(p^2+1)$). The code works with groups $\Gamma\leq \textup{GL}_2(\mathbb{Z}/N\mathbb{Z})$ instead of $\Delta\leq(\mathbb{Z}/N\mathbb{Z})^\times$. More details are in the paper.
+- Sutherland-GL2 folder also gives bounds on the $\mathbb F_p$ -gonality by counting the number of $\mathbb{F}_{p^2}$ points and concluding it is too large. The code works with groups $\Gamma\leq \textup{GL}_2(\mathbb{Z}/N\mathbb{Z})$ instead of $\Delta\leq(\mathbb{Z}/N\mathbb{Z})^\times$. More details are in the paper.
 
 ### Example
 We prove that the curve $(N,\Delta)=(71,\left<-1,5\right>)$ has $\mathbb{Q}$-gonality at least $6$.
